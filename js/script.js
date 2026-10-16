@@ -18,7 +18,7 @@ let weatherVar = "TAVG";
 let projection, colorScale;
 let latRange, longRange;
 
-const options = ["TAVG", "TMAX", "TMIN", "PRCP"];
+const options = ["TMAX", "TMIN", "PRCP", "TAVG"];
 const labels = {
   TAVG: "Average Temperature (F)",
   TMAX: "Max Temperature (F)",
