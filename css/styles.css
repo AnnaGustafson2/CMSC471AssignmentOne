@@ -153,3 +153,14 @@ label {
   pointer-events: none;
   font-size: 12px;
 }
+
+.writeup {
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #ddd;
+    max-width: 800px;
+    line-height: 1.6;
+}
+.writeup h2 { margin-top: 32px; }
+.writeup h2 { margin-top: 20px; }
+.writeup a { color: #2196f3; word-break: break-all; }
