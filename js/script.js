@@ -223,8 +223,8 @@ function updateLegend() {
     d3.select("#legendLeft").text(`${lo.toFixed(1)} in`);
     d3.select("#legendRight").text(`${hi.toFixed(1)} in`);
   } else {
-    d3.select("#legendLeft").text("Hot");
-    d3.select("#legendRight").text("Cold");
+    d3.select("#legendLeft").text("Cold");
+    d3.select("#legendRight").text("Hot");
   }
 }
 
@@ -240,8 +240,9 @@ function updateAxes() {
         : [0, 100],
     )
     .interpolator((t) =>
-      d3.interpolateRdYlBu(weatherVar === "PRCP" ? 1 - t : t),
+      d3.interpolateRdYlBu(weatherVar === "PRCP" ? 1 - t : 1 - t),
     );
+
   updateLegend();
 }
 
