@@ -11,6 +11,16 @@ const svg = d3
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
+  const mapGroup = svg.append("g");
+
+const zoom = d3.zoom()
+  .scaleExtent([1, 8])
+  .on("zoom", (event) => {
+    mapGroup.attr("transform", event.transform);
+  });
+
+svg.call(zoom);
+
 let allData = [];
 let dates = [];
 let targetDate;
@@ -58,7 +68,7 @@ function init() {
     .then((us) => {
       const states = topojson.feature(us, us.objects.states);
       projection = d3.geoAlbersUsa().fitSize([width, height], states);
-      svg
+      mapGroup
         .append("g")
         .selectAll("path")
         .data(states.features)
@@ -251,7 +261,7 @@ function updateVis() {
     (d) => d.date === targetDate && projection([d.longitude, d.latitude]),
   );
 
-  svg
+  mapGroup
     .selectAll(".points")
     .data(currentData, (d) => `${d.station}-${d.state}`)
     .join(
