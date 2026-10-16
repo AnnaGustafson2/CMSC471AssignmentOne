@@ -1,0 +1,68 @@
+<<<<<<< Updated upstream
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="tooltip" style="display:none"></div>
+    <div class="container">
+        <h1>Weather Visualizer</h1>
+        <p class="subtitle">A mapped visualization of daily temperature and precipitation in the US in 2017.</p>
+
+        <div class="top-row">
+            <div class="variable-group">
+                <label for="weatherVariable">Variable:</label>
+                <select id="weatherVariable" class="variable"></select>
+            </div>
+            <div class="date-group">
+                <label>Date:</label>
+                <div id="currentDate" class="date-box"></div>
+            </div>
+        </div>
+
+        <div class="panel slider-panel">
+            <div id="slider"></div>
+
+        </div>
+
+        <div class="panel range-panel controls">
+            <div class="range-group">
+                <label>Latitude Range</label>
+                <div id="latSlider"></div>
+            </div>
+            <div class="range-group">
+                <label>Longitude Range</label>
+                <div id="longSlider"></div>
+            </div>
+        </div>
+
+        <div class="panel map-panel">
+            <div id="vis"></div> <!-- Will hold our visualization (SVG) -->
+        </div>
+
+        <div class="legend">
+            <span id="legendLeft">Hot</span>
+            <div id="legendBar" class="legend-bar"></div>
+            <span id="legendRight">Cold</span>
+        </div>
+    </div>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+>>>>>>> Stashed changes
