@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 // set margin
 const margin = { top: 80, right: 60, bottom: 60, left: 100 };
 const width = 800 - margin.left - margin.right;
@@ -338,4 +336,3 @@ function updateVis() {
 }
 
 window.addEventListener("load", init);
->>>>>>> Stashed changes
