@@ -1,74 +1,182 @@
-/* Reset default styles */
 * {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0px auto;
-    line-height: 1.8;
+  font-family: "DM Sans";
 }
 
-/* Container styling for layout */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 16px;
+  background: url("../img/clouds.jpg") center;
+}
 .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    font-family: Arial, sans-serif;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 44px 40px 36px;
+  background: #f0f1f7;
+  border-radius: 24px;
+  color: #14142b;
 }
 
-#vis svg {
-    margin: 2rem 0;
-    border: 1px solid #ccc; /* otherwise you cannot see this part */
+h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
 }
 
-.x-axis path,
-.y-axis path {
-    stroke: #333;
-    shape-rendering: crispEdges;
+.subtitle {
+  margin: 6px 0 28px;
+  font-size: 18px;
+  color: #111;
 }
 
-.x-axis line {
-    stroke: #333;
-    shape-rendering: crispEdges;
+.top-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 14px;
 }
 
-.y-axis line {
-    stroke: #ddd;
-    shape-rendering: crispEdges;
+.variable-group,
+.date-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.x-axis text,
-.y-axis text {
-    font-size: 12px;
-    font-family: Arial, sans-serif;
-}
-
-.axis-label {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.axis text,
-.slider text {
-  font-size: 12px;
-  color: black
-}
-
-.slider text {
-  fill: green;
-}
-
-#tooltip {
-    position: absolute; /* So we can move it with the cursor */
-    padding: 10px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    pointer-events: none; /* Prevent tooltip from interfering with mouse events */
-    font-size: 12px;
+label {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .variable {
-    border-radius: 5px;
-    padding: 2px 5px;
-    border: 1px solid #ccc;
-    background-color: white;
-    font-size: 14px;
+  appearance: none;
+  padding: 14px 48px 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background-color: #d3dbf3;
+  background-image: url("../img/chevron.svg");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 20px;
+  color: #14142b;
+  cursor: pointer;
+  font-size: 20px;
+}
+.date-box {
+  padding: 14px 24px;
+  background: #fff;
+  border: 2.5px solid #d3d6ee;
+  border-radius: 14px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+#slider svg {
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+  max-width: 100%;
+  height: 70px;
+}
+#slider .track,
+#slider .track-inset,
+#latSlider .track,
+#latSlider .track-inset,
+#longSlider .track,
+#longSlider .track-inset {
+  stroke: #dde0e8;
+  stroke-width: 18px;
+  stroke-linecap: round;
+}
+
+#latSlider .track-fill,
+#longSlider .track-fill {
+  stroke: #b4b9e3;
+  stroke-width: 18px;
+  stroke-linecap: round;
+}
+
+#slider .handle,
+#latSlider .handle,
+#longSlider .handle {
+  fill: #fff;
+  stroke: #8f94c9;
+  stroke-width: 4px;
+}
+
+#slider .tick text,
+#latSlider .tick text,
+#longSlider .tick text,
+#latSlider .parameter-value text,
+#longSlider .parameter-value text {
+  font-size: 13px;
+  fill: #14142b;
+}
+
+.range-panel {
+  display: flex;
+  justify-content: space-around;
+}
+
+.range-group label {
+  font-size: 16px;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 28px;
+  font-size: 19px;
+}
+
+.legend-bar {
+  flex: 0 0 570px;
+  height: 14px;
+  border-radius: 7px;
+}
+
+#tooltip {
+  position: absolute;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.writeup {
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #ddd;
+    max-width: 800px;
+    line-height: 1.6;
+}
+.writeup h2 { margin-top: 32px; }
+.writeup h2 { margin-top: 20px; }
+.writeup a { color: #2196f3; word-break: break-all; }
+
+#lineChart svg {
+  max-width: 100%;
+  height: auto;
+}
+
+#chartTitle {
+  font-size: 20px;
+  color: #14142b;
+  margin-bottom: 20px;
+}
+
+.points {
+  cursor: pointer;
 }
