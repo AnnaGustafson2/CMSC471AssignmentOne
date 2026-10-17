@@ -76,6 +76,7 @@ label {
   border-radius: 18px;
   padding: 16px 24px;
   margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 #slider svg {
@@ -164,3 +165,18 @@ label {
 .writeup h2 { margin-top: 32px; }
 .writeup h2 { margin-top: 20px; }
 .writeup a { color: #2196f3; word-break: break-all; }
+
+#lineChart svg {
+  max-width: 100%;
+  height: auto;
+}
+
+#chartTitle {
+  font-size: 20px;
+  color: #14142b;
+  margin-bottom: 20px;
+}
+
+.points {
+  cursor: pointer;
+}

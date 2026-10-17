@@ -11,9 +11,10 @@ const svg = d3
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const mapGroup = svg.append("g");
+const mapGroup = svg.append("g");
 
-const zoom = d3.zoom()
+const zoom = d3
+  .zoom()
   .scaleExtent([1, 8])
   .on("zoom", (event) => {
     mapGroup.attr("transform", event.transform);
@@ -27,6 +28,9 @@ let targetDate;
 let weatherVar = "TAVG";
 let projection, colorScale;
 let latRange, longRange;
+let selectedStation = null;
+
+const parseDate = d3.timeParse("%Y%m%d");
 
 const options = ["TMAX", "TMIN", "PRCP", "TAVG"];
 const labels = {
@@ -167,6 +171,7 @@ function setupSelector() {
 
       updateAxes();
       updateVis();
+      updateLineChart();
     });
 
   let latSlider = d3
@@ -301,7 +306,7 @@ function updateVis() {
             d3.select("#tooltip")
               .style("display", "block")
               .html(
-                // Change the html content of the <div> directly
+
                 `<strong>${d.station}, ${d.state}</strong><br/>
                             Elevation: ${Math.round(d.elevation)} m<br/>
                             ${labels[weatherVar].split(" (")[0]}: ${value}`,
@@ -313,9 +318,13 @@ function updateVis() {
               .style("stroke-width", "2px");
           })
           .on("mouseout", function (event, d) {
-            d3.select("#tooltip").style("display", "none"); // Hide tooltip when cursor leaves
-            d3.select(this) // Refers to the hovered circle
+            d3.select("#tooltip").style("display", "none");
+            d3.select(this)
               .style("stroke", "none");
+          })
+          .on("click", function (event, d) {
+            selectedStation = d;
+            updateLineChart();
           }),
 
       (update) =>
@@ -344,6 +353,76 @@ function updateVis() {
 
       (exit) => exit.remove(),
     );
+}
+
+function updateLineChart() {
+  if (!selectedStation) return;
+
+  const stationData = allData
+    .filter(d => d.station === selectedStation.station &&
+                 d.state === selectedStation.state &&
+                 d[weatherVar] !== null)
+    .map(d => ({
+      date: parseDate(d.date),
+      value: d[weatherVar]
+    }))
+    .sort((a, b) => a.date - b.date);
+
+  d3.select("#chartTitle")
+    .text(`${selectedStation.station}, ${selectedStation.state} - ${labels[weatherVar]}`);
+
+  d3.select("#lineChart").selectAll("*").remove();
+  if (stationData.length === 0) {
+  d3.select("#lineChart")
+    .append("p")
+    .text("No data available for this station.");
+  return;
+}
+  
+
+  const chartWidth = 700;
+  const chartHeight = 350;
+
+  const svg = d3.select("#lineChart")
+    .append("svg")
+    .attr("width", 800)
+    .attr("height", 400)
+    .append("g")
+    .attr("transform", "translate(60,20)");
+
+  const xScale = d3.scaleTime()
+    .domain(d3.extent(stationData, d => d.date))
+    .range([0, chartWidth]);
+
+  const yScale = d3.scaleLinear()
+    .domain(d3.extent(stationData, d => d.value))
+    .nice()
+    .range([chartHeight, 0]);
+
+  svg.append("g")
+    .attr("transform", `translate(0,${chartHeight})`)
+    .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%b")));
+
+  svg.append("g")
+    .call(d3.axisLeft(yScale));
+
+  const line = d3.line()
+    .x(d => xScale(d.date))
+    .y(d => yScale(d.value));
+
+  svg.append("path")
+    .datum(stationData)
+    .attr("fill", "none")
+    .attr("stroke", "#8f94c9")
+    .attr("stroke-width", 2.5)
+    .attr("d", line);
+
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -chartHeight / 2)
+    .attr("y", -45)
+    .attr("text-anchor", "middle")
+    .text(labels[weatherVar]);
 }
 
 window.addEventListener("load", init);
