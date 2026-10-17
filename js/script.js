@@ -25,7 +25,7 @@ svg.call(zoom);
 let allData = [];
 let dates = [];
 let targetDate;
-let weatherVar = "TAVG";
+let weatherVar = "TMAX";
 let projection, colorScale;
 let latRange, longRange;
 let selectedStation = null;
