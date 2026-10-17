@@ -71,13 +71,8 @@
         <h3>Rationale for your design decisions. List your implemented interactions. Explain: How did you choose your
             particular visual encodings and interaction techniques? What alternatives did you consider and how did you
             arrive at your ultimate choices?</h3>
-        <p>To accurately display the locations of the weather records, we decided to use a map of the United States with
-            colored dots representing temperature and precipitation. This allows users to easily identify weather
-            patterns and trends across different locations.</p>
-        <p>Alternatives that we considered included a bar chart to visualize the precipitation and temperature over
-            time. However, we thought that having each record on a map would be more useful when trying to compare
-            trends throughout the entire US. We also initially only had precipitation and average temperature as the
-            variables, but added more in order to give the user more options to explore.</p>
+        <p>To accurately display the locations of the weather records, we decided to use a map of the United States with colored dots representing temperature and precipitation recorded at different stations. This allows users to easily identify weather patterns and trends across different locations. </p>
+        <p>Alternatives that we considered at first included a bar chart as the main view to visualize the precipitation and temperature over time. However, we thought that having each record on a map would be more useful when trying to compare trends throughout the entire US. We also initially only had precipitation and average temperature as the variables, but added more in order to give the user more options to explore.</p>
         <p>For temperature, warmer colors represent higher temperatures, while cooler colors represent lower
             temperatures. We also added interactive tooltips that allow users to view more detailed weather information
             for a specific location.</p>
@@ -91,9 +86,9 @@
             gives users the ability to focus on specific regions rather than viewing the entire country. For example, a
             user might want to examine temperature trends along the East Coast instead of across the entire United
             States.</p>
-        <p>Finally, we added a color legend at the bottom of the visualization to help users understand what each color
-            represents. This makes it easier to interpret the data and compare weather conditions across different
-            locations.</p>
+        <p>Since the latitude and longitude sliders primarily just limit the section of dots in focus, we also implemented a zoom and pan feature so that users could further examine specific regions of the map in more detail. Especially since many stations are clustered together, their dots may overlap at the default scale. Zooming and panning can let users enlarge their areas of interest and inspect them more closely.</p>
+        <p>We added a color legend at the bottom of the map visualization to help users understand what each color represents. This makes it easier to interpret the data and compare weather conditions across different locations..</p>
+        <p>Finally, since the map only shows one date at a time, we also made each station clickable. Clicking on a certain station displays a line graph below the map that shows the selected variable for that station across time. This lets users examine a weather trend for a station of interest more holistically. A line graph helps visually encode change over time intuitively for users. Since the graph uses the currently selected variable for the map, changing the variable updates the line graph below as well.</p>
         <h3>References to data resources. Be sure to list the data source you used. If your work adapts or builds on
             existing visualization examples, please cite those as well.</h3>
         <p>In our visualization, we utilized the TopoJSON Atlas for fast rendering of geographic states as well as
@@ -114,18 +109,12 @@
             displayed on a map as well as developed the latitude and longitude sliders. Finally, Kyra made a polished
             Figma and developed straightforward UX designs including color scales and legends. Each individual step took
             roughly two hours to complete.</p>
-        <p>Next we divided the work into sections for the development of the web page. Anna created the web page shell,
-            loaded the data, and connected the variable dropdown and the date slider to the data points so that the data
-            appeared and updated based on the user interaction. Mahita integrated the TopoJSON Atlas in order to have
-            the points displayed upon a map of the United States, added longitude and latitude sliders, and created
-            tooltips to explain additional information where the user hovers over data points. Kyra crafted the UX
-            design to be intuitive and clean, fixed all labeling and inconsistency issues, and added legends. Each
-            person's part took around three hours to complete.</p>
+        <p>Next we divided the work into sections for the development of the web page. Anna created the web page shell, loaded the data, and connected the variable dropdown and the date slider to the data points so that the data appeared and updated based on the user interaction. Mahita integrated the TopoJSON Atlas in order to have the points displayed upon a map of the United States, added longitude and latitude sliders, and created tooltips to explain additional information where the user hovers over data points. Kyra crafted the UX design to be intuitive and clean, fixed all labeling and inconsistency issues, added legends, implemented zooming and panning, and added the line chart linking. Each person's part took around three hours to complete.</p>
         <p>Finally, Kyra recorded the demo video and everyone contributed to the writeup. This took an additional 1.5
             hours a person to complete. In all it took around 20 people hours to make this visualization and the coding
             and debugging portion took the longest.</p>
         <h3>Demo Video</h3>
-        <p><a href="https://youtu.be/CFbSEevc9NE">https://youtu.be/CFbSEevc9NE</a></p>
+        <p><a href="https://youtu.be/EDDo0EdEX5g " target="_blank" rel="noopener noreferrer">https://youtu.be/EDDo0EdEX5g </a></p>
     </section>
 
     <!-- Load D3.js -->
